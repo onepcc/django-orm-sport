@@ -6,286 +6,315 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     {% load static %}
+<style>
+    li{
+        margin-left: 2%;
+    }
+</style>
 </head>
 
 <body>
 
+    <div class="container">
+        <div class="row">
+
+            <h1>1.- Todos los equipos en liga Atlantic Soccer Conference</h1>
+            <ol>
+                {% for equ in atlantic_soccer_teams %}
+                <li>{{equ.location}} {{equ.team_name}} ({{equ.league.name}} - {{equ.league.sport}})</li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
+
+            <h1>2.- Todos los jugadores (actuales) en los Boston Penguins </h1>
+            <ol>
+                {% for jug in current_players_boston_penguins %}
+                <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
+                    {{jug.curr_team.team_name}}
+                    - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}} </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
 
-    <h1>1.- Todos los equipos en liga Atlantic Soccer Conference</h1>
-    <ol>
-        {% for equ in atlantic_soccer_teams %}
-        <li>{{equ.location}} {{equ.team_name}} ({{equ.league.name}} - {{equ.league.sport}})</li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>3.- Todos los jugadores (actuales) en la International Collegiate Baseball Conference </h1>
+            <ol>
+                {% for jug in current_players_icbc %}
+                <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
+                    {{jug.curr_team.team_name}}
+                    - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}}</li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
-    <h1>2.- Todos los jugadores (actuales) en los Boston Penguins </h1>
-    <ol>
-        {% for jug in current_players_boston_penguins %}
-        <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}} {{jug.curr_team.team_name}}
-            - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}} </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
-
-
-    <h1>3.- Todos los jugadores (actuales) en la International Collegiate Baseball Conference </h1>
-    <ol>
-        {% for jug in current_players_icbc %}
-        <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}} {{jug.curr_team.team_name}}
-            - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}}</li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
-
-    <h1>4.- todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López" </h1>
-    <ol>
-        {% for jug in current_players_cafa_lopez %}
-        <li>{{jug.first_name}} {{jug.last_name}} - <spam class="text-success">Equipo actual: {{jug.curr_team.location}}
-                {{jug.curr_team.team_name}} </spam> - <spam class="text-danger">Deporte: {{jug.curr_team.league.sport}}
-            </spam> - <spam class="text-primary">Liga:{{jug.curr_team.league.name}}</spam>
-        </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>4.- todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López"
+            </h1>
+            <ol>
+                {% for jug in current_players_cafa_lopez %}
+                <li>{{jug.first_name}} {{jug.last_name}} - <spam class="text-success">Equipo actual:
+                        {{jug.curr_team.location}}
+                        {{jug.curr_team.team_name}} </spam> - <spam class="text-danger">Deporte:
+                        {{jug.curr_team.league.sport}}
+                    </spam> - <spam class="text-primary">Liga:{{jug.curr_team.league.name}}</spam>
+                </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
 
-    <h1>5.- todos los jugadores de fútbol </h1>
-    <ol>
-        {% for jug in todos_jugadores_football %}
-        <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}} {{jug.curr_team.team_name}}
-            - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}}</li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>5.- todos los jugadores de fútbol </h1>
+            <ol>
+                {% for jug in todos_jugadores_football %}
+                <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
+                    {{jug.curr_team.team_name}}
+                    - Deporte: {{jug.curr_team.league.sport}} - Liga:{{jug.curr_team.league.name}}</li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
 
-    <h1>6.- Todos los EQUIPOS con un jugador (actual) llamado "Sophia"</h1>
-    <ol>
-        {% for jug in todos_jugadores_sophia %}
-        <li>
-            <spam class="text-success">Equipo actual: {{jug.curr_team.location}} {{jug.curr_team.team_name}} -
-                ({{jug.first_name}} {{jug.last_name}}) - </spam> - <spam class="text-danger">Deporte:
-                {{jug.curr_team.league.sport}}</spam> - <spam class="text-primary">Liga:{{jug.curr_team.league.name}}
-            </spam>
-        </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>6.- Todos los EQUIPOS con un jugador (actual) llamado "Sophia"</h1>
+            <ol>
+                {% for jug in todos_jugadores_sophia %}
+                <li>
+                    <spam class="text-success">Equipo actual: {{jug.curr_team.location}} {{jug.curr_team.team_name}} -
+                        ({{jug.first_name}} {{jug.last_name}}) - </spam> - <spam class="text-danger">Deporte:
+                        {{jug.curr_team.league.sport}}</spam> - <spam class="text-primary">
+                        Liga:{{jug.curr_team.league.name}}
+                    </spam>
+                </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
 
-    <h1>7.- Todos las LIGAS con un jugador (actual) llamado "Sophia"</h1>
-    <ol>
-        {% for jug in todos_jugadores_sophia %}
-        <li>
-            <spam class="text-primary">Liga:{{jug.curr_team.league.name}}</spam> - ({{jug.first_name}} {{jug.last_name}}
-            ) - <spam class="text-success">Equipo actual: {{jug.curr_team.location}} {{jug.curr_team.team_name}} </spam>
-            - <spam class="text-danger">Deporte: {{jug.curr_team.league.sport}}</spam>
-        </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>7.- Todos las LIGAS con un jugador (actual) llamado "Sophia"</h1>
+            <ol>
+                {% for jug in todos_jugadores_sophia %}
+                <li>
+                    <spam class="text-primary">Liga:{{jug.curr_team.league.name}}</spam> - ({{jug.first_name}}
+                    {{jug.last_name}}
+                    ) - <spam class="text-success">Equipo actual: {{jug.curr_team.location}} {{jug.curr_team.team_name}}
+                    </spam>
+                    - <spam class="text-danger">Deporte: {{jug.curr_team.league.sport}}</spam>
+                </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
-    <h1>8.- Todos con el apellido "Flores" que NO juegan (actualmente)  para los Washington Roughriders</h1>
-    <ol>
-        {% for jug in current_noplayers_wr_flores %}
-        <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
-                {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-danger">Deporte:
-                {{jug.curr_team.league.sport}}</spam>
-        </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>8.- Todos con el apellido "Flores" que NO juegan (actualmente) para los Washington Roughriders</h1>
+            <ol>
+                {% for jug in current_noplayers_wr_flores %}
+                <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
+                        {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
+                            Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-danger">Deporte:
+                        {{jug.curr_team.league.sport}}</spam>
+                </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
-    <h1>9.- Todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado</h1>
-    <ol>
-        <spam class="text-danger"> Equipo Presente: {{current_samuel_evans.curr_team.location}}
-            {{current_samuel_evans.curr_team.team_name}} </spam>
-        {% for jug in current_samuel_evans.all_teams.all %}
-        <li>
-            <spam class="text-success"> Equipos {{jug.location}} {{jug.team_name}}</spam>
-        </li>
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>9.- Todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado</h1>
+            <ol>
+                <spam class="text-danger"> Equipo Presente: {{current_samuel_evans.curr_team.location}}
+                    {{current_samuel_evans.curr_team.team_name}} </spam>
+                {% for jug in current_samuel_evans.all_teams.all %}
+                <li>
+                    <spam class="text-success"> Equipos {{jug.location}} {{jug.team_name}}</spam>
+                </li>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
 
-    <h1>10.- todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba</h1>
-    <ol>
-        {% for jug in all_players_manitoba_tigers %}
-        {% if jug.curr_team.location == 'Manitoba' %}
-        <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
-                {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
-                {{jug.curr_team.league.sport}}</spam>
-        </li>
+            <h1>10.- todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba</h1>
+            <ol>
+                {% for jug in all_players_manitoba_tigers %}
+                {% if jug.curr_team.location == 'Manitoba' %}
+                <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
+                        {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
+                            Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.curr_team.league.sport}}</spam>
+                </li>
 
-        {% else %}
-        <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-danger">Equipo actual:
-                {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
-                {{jug.curr_team.league.sport}}</spam>
-        </li>
-        {% endif %}
+                {% else %}
+                <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-danger">Equipo actual:
+                        {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
+                            Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.curr_team.league.sport}}</spam>
+                </li>
+                {% endif %}
 
-        {% empty %}
-        <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+                {% empty %}
+                <p>No team found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
 
-    <h1>11.- todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings</h1>
-    <ol>
-        {% for jug in all_players_antes_wv %}
-        {% if jug.curr_team.location != 'Wichita' %}
-        <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
-                {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
-                {{jug.curr_team.league.sport}}</spam>
-        </li>
+            <h1>11.- todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings</h1>
+            <ol>
+                {% for jug in all_players_antes_wv %}
+                {% if jug.curr_team.location != 'Wichita' %}
+                <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
+                        {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
+                            Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.curr_team.league.sport}}</spam>
+                </li>
 
-        {% else %}
-        <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-danger">Equipo pasado:
-                {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
-                {{jug.curr_team.league.sport}}</spam>
-        </li>
-        {% endif %}
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
+                {% else %}
+                <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-danger">Equipo pasado:
+                        {{jug.curr_team.location}} {{jug.curr_team.team_name}} - <spam class="text-primary">
+                            Liga:{{jug.curr_team.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.curr_team.league.sport}}</spam>
+                </li>
+                {% endif %}
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
 
-    <h1>12.- cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts</h1>
-    <ol> -- Equipos en los que ha estado {{teams_jacob_gray.first_name}} {{teams_jacob_gray.last_name}} --
-        {% for jug in teams_jacob_gray.all_teams.all %}
-        {% if jug.location == 'Oregon' %}
-        <li>
-            <spam class="text-success">Equipo actual: {{jug.location}} {{jug.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte: {{jug.league.sport}}
-            </spam>
-        </li>
+            <h1>12.- cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts</h1>
+            <ol> -- Equipos en los que ha estado {{teams_jacob_gray.first_name}} {{teams_jacob_gray.last_name}} --
+                {% for jug in teams_jacob_gray.all_teams.all %}
+                {% if jug.location == 'Oregon' %}
+                <li>
+                    <spam class="text-success">Equipo actual: {{jug.location}} {{jug.team_name}} - <spam
+                            class="text-primary">
+                            Liga:{{jug.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.league.sport}}
+                    </spam>
+                </li>
 
-        {% else %}
-        <li>
-            <spam class="text-danger">Equipo pasado: {{jug.location}} {{jug.team_name}} - <spam class="text-primary">
-                    Liga:{{jug.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte: {{jug.league.sport}}
-            </spam>
-        </li>
-        {% endif %}
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
+                {% else %}
+                <li>
+                    <spam class="text-danger">Equipo pasado: {{jug.location}} {{jug.team_name}} - <spam
+                            class="text-primary">
+                            Liga:{{jug.league.name}}</spam> - </spam> - <spam class="text-warning">Deporte:
+                        {{jug.league.sport}}
+                    </spam>
+                </li>
+                {% endif %}
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
 
-    <h1>13.-todos llamados "Joshua" que alguna vez han jugado en la Atlantic Federation of Amateur Baseball Players
-    </h1>
-    <ol>
-        {% for jugador in all_joshuas_afabp %}
-        <li>{{jugador.first_name}} {{jugador.last_name}}</li>
-        <ol>  <spam class="text-success"> Equipo actual: {{jugador.curr_team.location}} {{jugador.curr_team.team_name}} </spam>
-            {% for team in jugador.all_teams.all %}
-            {% if team.league.name == 'Atlantic Federation of Amateur Baseball Players' %}
-            <li>
-                <spam class="text-danger">Liga: {{team.league.name}}</spam> - <spam class="text-info">- Equipo: {{team.location}} {{team.team_name}} </spam> - <spam class="text-secondary">Deporte:
-                    {{team.league.sport}}</spam>
-                
-            </li>
-            {% else %}
-            <li>
-            <spam class="text-dark">Liga: {{team.league.name}}</spam> - <spam class="text-info">- Equipo: {{team.location}} {{team.team_name}} </spam> - <spam class="text-secondary">Deporte:
-                {{team.league.sport}}</spam>
-            </li>
-            {% endif %}
-            {% endfor %}
-        </ol>
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
-   
-    <h1>14.- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
-    <ol>
-        {% for team in all_teams_mas12p %}
-        {% if team.all_players__count >= 12 %}
-        <li>{{team.location}} {{team.team_name}}  -- Jugadores: {{team.all_players__count}}</li>
-        {% endif %}
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
-    
-    <h1>14.B- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
-    <ol>
-        {% for team in team12 %}
-        
-        <li>{{team.location}} {{team.team_name}}  -- Jugadores: {{team.njugadores}}</li>
-        
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
+            <h1>13.-todos llamados "Joshua" que alguna vez han jugado en la Atlantic Federation of Amateur Baseball
+                Players
+            </h1>
+            <ol>
+                {% for jugador in all_joshuas_afabp %}
+                <li>{{jugador.first_name}} {{jugador.last_name}}</li>
+                <ol>
+                    <spam class="text-success"> Equipo actual: {{jugador.curr_team.location}}
+                        {{jugador.curr_team.team_name}} </spam>
+                    {% for team in jugador.all_teams.all %}
+                    {% if team.league.name == 'Atlantic Federation of Amateur Baseball Players' %}
+                    <li>
+                        <spam class="text-danger">Liga: {{team.league.name}}</spam> - <spam class="text-info">- Equipo:
+                            {{team.location}} {{team.team_name}} </spam> - <spam class="text-secondary">Deporte:
+                            {{team.league.sport}}</spam>
 
-    <h1>15.- todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado</h1>
-    <ol>
-        {% for player in all_players_nequipos_ordernados %}
-        
-        <li>{{player.first_name}} {{player.last_name}} -- N° equipos: {{player.nequipos}}</li>
-        
-        {% empty %}
-        <p>No team found.</p>
-        {% endfor %}
-    </ol>
+                    </li>
+                    {% else %}
+                    <li>
+                        <spam class="text-dark">Liga: {{team.league.name}}</spam> - <spam class="text-info">- Equipo:
+                            {{team.location}} {{team.team_name}} </spam> - <spam class="text-secondary">Deporte:
+                            {{team.league.sport}}</spam>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ol>
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
 
-    <h1>Todas las Ligas</h1>
-    <ol>
-        {% for league in leagues %}
-        <li>{{league.name}}</li>
-        {% empty %}
-        <p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
-    <h1>Teams</h1>
-    <ol>
-        {% for team in teams %}
-        <li>{{team.location}} {{team.team_name}}</li>
-        {% empty %}
-        <p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
-    <h1>Players</h1>
-    <ol>
-        {% for player in players %}
-        <li>{{player.first_name}} {{player.last_name}} -- Equipo actual:{{player.curr_team.location}}
-            {{player.curr_team.team_name}} -- Equipo pasado:{{player.all_teams.location}} {{player.all_teams.team_name}}
-            --Deporte: {{player.curr_team.league.sport}} - Liga:{{player.curr_team.league.name}} </li>
-        {% empty %}
-        <p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
-                href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
-        {% endfor %}
-    </ol>
+            <h1>14.- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
+            <ol>
+                {% for team in all_teams_mas12p %}
+                {% if team.all_players__count >= 12 %}
+                <li>{{team.location}} {{team.team_name}} -- Jugadores: {{team.all_players__count}}</li>
+                {% endif %}
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
+
+            <h1>14.B- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
+            <ol>
+                {% for team in team12 %}
+
+                <li>{{team.location}} {{team.team_name}} -- Jugadores: {{team.njugadores}}</li>
+
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
+
+            <h1>15.- todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos
+                para los que han jugado</h1>
+            <ol>
+                {% for player in all_players_nequipos_ordernados %}
+
+                <li>{{player.first_name}} {{player.last_name}} -- N° equipos: {{player.nequipos}}</li>
+
+                {% empty %}
+                <p>No team found.</p>
+                {% endfor %}
+            </ol>
+
+            <h1>Todas las Ligas</h1>
+            <ol>
+                {% for league in leagues %}
+                <li>{{league.name}}</li>
+                {% empty %}
+                <p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work,
+                    going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
+            <h1>Teams</h1>
+            <ol>
+                {% for team in teams %}
+                <li>{{team.location}} {{team.team_name}}</li>
+                {% empty %}
+                <p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
+            <h1>Players</h1>
+            <ol>
+                {% for player in players %}
+                <li>{{player.first_name}} {{player.last_name}} -- Equipo actual:{{player.curr_team.location}}
+                    {{player.curr_team.team_name}} -- Equipo pasado:{{player.all_teams.location}}
+                    {{player.all_teams.team_name}}
+                    --Deporte: {{player.curr_team.league.sport}} - Liga:{{player.curr_team.league.name}} </li>
+                {% empty %}
+                <p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+                    <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+                {% endfor %}
+            </ol>
+
+        </div>
+    </div>
 </body>
 
 </html>
