@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
 
-            <h1>1.- Todos los equipos en liga Atlantic Soccer Conference</h1>
+            <h2>1.- Todos los equipos en liga Atlantic Soccer Conference</h2>
             <ol>
                 {% for equ in atlantic_soccer_teams %}
                 <li>{{equ.location}} {{equ.team_name}} ({{equ.league.name}} - {{equ.league.sport}})</li>
@@ -28,7 +28,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>2.- Todos los jugadores (actuales) en los Boston Penguins </h1>
+            <h2>2.- Todos los jugadores (actuales) en los Boston Penguins </h2>
             <ol>
                 {% for jug in current_players_boston_penguins %}
                 <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
@@ -41,7 +41,7 @@
             </ol>
 
 
-            <h1>3.- Todos los jugadores (actuales) en la International Collegiate Baseball Conference </h1>
+            <h2>3.- Todos los jugadores (actuales) en la International Collegiate Baseball Conference </h2>
             <ol>
                 {% for jug in current_players_icbc %}
                 <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
@@ -53,8 +53,8 @@
                 {% endfor %}
             </ol>
 
-            <h1>4.- todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López"
-            </h1>
+            <h2>4.- todos los jugadores (actuales) en la Conferencia Americana de Fútbol Amateur con el apellido "López"
+            </h2>
             <ol>
                 {% for jug in current_players_cafa_lopez %}
                 <li>{{jug.first_name}} {{jug.last_name}} - <spam class="text-success">Equipo actual:
@@ -70,7 +70,7 @@
             </ol>
 
 
-            <h1>5.- todos los jugadores de fútbol </h1>
+            <h2>5.- todos los jugadores de fútbol </h2>
             <ol>
                 {% for jug in todos_jugadores_football %}
                 <li>{{jug.first_name}} {{jug.last_name}} - Equipo actual:{{jug.curr_team.location}}
@@ -83,7 +83,7 @@
             </ol>
 
 
-            <h1>6.- Todos los EQUIPOS con un jugador (actual) llamado "Sophia"</h1>
+            <h2>6.- Todos los EQUIPOS con un jugador (actual) llamado "Sophia"</h2>
             <ol>
                 {% for jug in todos_jugadores_sophia %}
                 <li>
@@ -100,7 +100,7 @@
             </ol>
 
 
-            <h1>7.- Todos las LIGAS con un jugador (actual) llamado "Sophia"</h1>
+            <h2>7.- Todos las LIGAS con un jugador (actual) llamado "Sophia"</h2>
             <ol>
                 {% for jug in todos_jugadores_sophia %}
                 <li>
@@ -116,7 +116,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>8.- Todos con el apellido "Flores" que NO juegan (actualmente) para los Washington Roughriders</h1>
+            <h2>8.- Todos con el apellido "Flores" que NO juegan (actualmente) para los Washington Roughriders</h2>
             <ol>
                 {% for jug in current_noplayers_wr_flores %}
                 <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
@@ -130,7 +130,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>9.- Todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado</h1>
+            <h2>9.- Todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado</h2>
             <ol>
                 <spam class="text-danger"> Equipo Presente: {{current_samuel_evans.curr_team.location}}
                     {{current_samuel_evans.curr_team.team_name}} </spam>
@@ -145,7 +145,7 @@
             </ol>
 
 
-            <h1>10.- todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba</h1>
+            <h2>10.- todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba</h2>
             <ol>
                 {% for jug in all_players_manitoba_tigers %}
                 {% if jug.curr_team.location == 'Manitoba' %}
@@ -169,7 +169,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>11.- todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings</h1>
+            <h2>11.- todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings</h2>
             <ol>
                 {% for jug in all_players_antes_wv %}
                 {% if jug.curr_team.location != 'Wichita' %}
@@ -191,7 +191,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>12.- cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts</h1>
+            <h2>12.- cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts</h2>
             <ol> -- Equipos en los que ha estado {{teams_jacob_gray.first_name}} {{teams_jacob_gray.last_name}} --
                 {% for jug in teams_jacob_gray.all_teams.all %}
                 {% if jug.location == 'Oregon' %}
@@ -217,9 +217,9 @@
                 {% endfor %}
             </ol>
 
-            <h1>13.-todos llamados "Joshua" que alguna vez han jugado en la Atlantic Federation of Amateur Baseball
+            <h2>13.-todos llamados "Joshua" que alguna vez han jugado en la Atlantic Federation of Amateur Baseball
                 Players
-            </h1>
+            </h2>
             <ol>
                 {% for jugador in all_joshuas_afabp %}
                 <li>{{jugador.first_name}} {{jugador.last_name}}</li>
@@ -248,7 +248,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>14.- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
+            <h2>14.- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h2>
             <ol>
                 {% for team in all_teams_mas12p %}
                 {% if team.all_players__count >= 12 %}
@@ -259,7 +259,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>14.B- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h1>
+            <h2>14.B- todos los equipos que han tenido 12 o más jugadores, pasados y presentes.</h2>
             <ol>
                 {% for team in team12 %}
 
@@ -270,8 +270,8 @@
                 {% endfor %}
             </ol>
 
-            <h1>15.- todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos
-                para los que han jugado</h1>
+            <h2>15.- todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos
+                para los que han jugado</h2>
             <ol>
                 {% for player in all_players_nequipos_ordernados %}
 
@@ -282,7 +282,7 @@
                 {% endfor %}
             </ol>
 
-            <h1>Todas las Ligas</h1>
+            <h2>Todas las Ligas</h2>
             <ol>
                 {% for league in leagues %}
                 <li>{{league.name}}</li>
@@ -291,7 +291,7 @@
                     going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
                 {% endfor %}
             </ol>
-            <h1>Teams</h1>
+            <h2>Teams</h2>
             <ol>
                 {% for team in teams %}
                 <li>{{team.location}} {{team.team_name}}</li>
@@ -300,7 +300,7 @@
                     <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
                 {% endfor %}
             </ol>
-            <h1>Players</h1>
+            <h2>Players</h2>
             <ol>
                 {% for player in players %}
                 <li>{{player.first_name}} {{player.last_name}} -- Equipo actual:{{player.curr_team.location}}
