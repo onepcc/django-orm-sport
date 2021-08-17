@@ -101,7 +101,7 @@
         {% endfor %}
     </ol>
 
-    <h1>8.- Todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders</h1>
+    <h1>8.- Todos con el apellido "Flores" que NO juegan (actualmente)  para los Washington Roughriders</h1>
     <ol>
         {% for jug in current_noplayers_wr_flores %}
         <li>({{jug.first_name}} {{jug.last_name}} ) - <spam class="text-success">Equipo actual:
@@ -228,7 +228,7 @@
     <ol>
         {% for team in all_teams_mas12p %}
         {% if team.all_players__count >= 12 %}
-        <li>{{team.team_name}} {{team.location}} -- Jugadores: {{team.all_players__count}}</li>
+        <li>{{team.location}} {{team.team_name}}  -- Jugadores: {{team.all_players__count}}</li>
         {% endif %}
         {% empty %}
         <p>No team found.</p>
@@ -239,7 +239,7 @@
     <ol>
         {% for team in team12 %}
         
-        <li>{{team.team_name}} {{team.location}} -- Jugadores: {{team.njugadores}}</li>
+        <li>{{team.location}} {{team.team_name}}  -- Jugadores: {{team.njugadores}}</li>
         
         {% empty %}
         <p>No team found.</p>

@@ -73,7 +73,7 @@ def index2(request):
 	#5.- todos los jugadores de fútbol
 	todos_jugadores_football = todos_jugadores.filter(curr_team__league__sport ='Football')
 	
-	#6.- todos los equipos con un jugador (actual) llamado "Sophia"
+	#6.- todos los equipos con un jugador (actual) llamado "Sophia" / varias sofias
 	todos_jugadores_sophia = todos_jugadores.filter(first_name ='Sophia')
 
 	#7.- todos las ligas con un jugador (actual) llamado "Sophia"
@@ -86,7 +86,7 @@ def index2(request):
 	current_samuel_evans = todos_jugadores.get(Q(first_name ='Samuel')&Q(last_name='Evans'))
 
 	#10.- todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba
-	all_players_manitoba_tigers= todos_equipos.get(Q(team_name ='Tiger-Cats')&Q(location='Manitoba')).all_players.all()
+	all_players_manitoba_tigers= todos_equipos.get(team_name ='Tiger-Cats',location='Manitoba').all_players.all()
 
 	#11.- todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings
 	all_players_antes_wv= todos_equipos.get(Q(team_name ='Vikings')&Q(location='Wichita')).all_players.all()
