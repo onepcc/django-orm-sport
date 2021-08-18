@@ -93,12 +93,14 @@ def index2(request):
 
 	#12.- cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts
 	teams_jacob_gray = todos_jugadores.get(Q(first_name ='Jacob')&Q(last_name='Gray'))
+	teams_jacob_gray1 = todos_equipos.filter(all_players__first_name='Jacob',all_players__last_name='Jacob').exclude(team_name='Colts')
 
 	#13.- todos llamados "Joshua" que alguna vez han jugado en la Atlantic Federation of Amateur Baseball Players
 	all_joshuas_afabp= todos_jugadores.filter(Q(first_name ='Joshua')&Q(all_teams__league__name__icontains='Atlantic Federation of Amateur Baseball Players'))
 
 	#14.- todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django).
 	all_teams_mas12p= todos_equipos.annotate(Count('all_players'))
+	all_teams_mayor12p= todos_equipos.annotate(njugadores=Count('all_players')).filter(njugadores__gte=12)
 	t12 = todos_equipos.alias(njugadores=Count('all_players')).filter(njugadores__gte=12)
 
 	#15.- todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado
